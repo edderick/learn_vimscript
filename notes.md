@@ -233,3 +233,32 @@ Local Settings
 
 Using :setlocal, it is possible to apply settings to only one buffer.
 
+Autocommands
+------------
+
+Autocommand allow us to tell Vim to do something when something happens.
+An example:
+
++ :autocmd BufNewFile * :write, When a new file is opened, write it to disk.
+
+###What This Does
+
++ :autocmd basically says listen for this event.
++ * is a pattern. It is used as a filter for the event.
++ And finally, :write is the command to execute when a matching event occurs.
+
+There is a huge range of different types of events, ranging from editing a new
+file, switching buffer, not doing anything, changing modes, the list goes on.
+
++ :autocmd BufNewFile *.txt :write, As above, but only for .txt files.
++ :autocmd BufWritePre *.html :normal gg=G, correctly indent HTML files on save.
+
+Commenting a line:
+
++ :autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
++ :autocmd FileType python nnoremap <buffer> <localleader>c I#<esc>
+
+And that right there gives meaning to the buffer specific settings! Thanks Vim!
+
+GOTCHA: The one downside is that you cannot use any special characters when
+specifying the command to be run.
