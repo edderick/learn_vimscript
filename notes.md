@@ -152,4 +152,48 @@ Mappings are not context sensitive, abbreviations are, e.g.
 More Mappings
 -------------
 
+If you map something that shadows a multiple key mapping, if you type it
+quickly, you will get the new mapping. If you type it slowly, you will get the
+original mapping. 
+
+There is a timeout on the command.
+
+###Time For Something A Little Bit Trickier
+
+What does this do?
+
++ :nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
+<!-- " Silly quote -->
+
+WHAT DOES IT DO???
+
+Well, it surrounds the current work with quotes. But what is more important is
+how does it work?
+
+Break it down now:
+
++ viw - visually selects a word
++ <esc> - exits visual mode, leaving the cursor on the last char of the word
++ a - append
++ " - we are in insert mode, so this inserts a quote <!-- " silly quote -->
++ <esc> - go back to normal mode
++ h - move one character left
++ b - move back to start of word
++ i - enter insert mode before current char
++ " - as above :) <!-- " silly quote -->
++ <esc> - go back to normal mode 
++ l - move right, bringing cursor to first char of word 
++ e - move cursor to end of word
++ l - move right again, cursor comes to rest on the end quote
+
+Because we used :nnoremap, this will always do as we expect. However, notice
+how difficult to read Vim mappings can get! 
+
+Quick Tip
+---------
+
+If you need to jump to the start of the previously selected visual block, use `<
+Conversely, to jump to the end, use `>
+
 
