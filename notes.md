@@ -195,5 +195,41 @@ Quick Tip
 
 If you need to jump to the start of the previously selected visual block, use `<
 Conversely, to jump to the end, use `>
+ 
+One Way of Speeding Up Editing 
+------------------------------
 
+If you map jk to <esc> then you can have a nice fast way of getting back to
+normal mode. You can then force yourself to use this new mapping by binding the
+old mapping to <nop>
+
++ :inoremap jk <esc> 
++ :inoremap <esc> <nop>
+
+This binding allows you to keep your fingers on the home row. Now that you are a
+perfect touch typist, that is sure to improve your productivity by several
+orders of magnitude!
+
+Use this idea to force yourself to use all kinds of new mappings, and speed
+yourself up in the long run. :)
+
+Bro you shouldn''t still be using the arrow keys! Especially in insert mode. :p
+(I think that it is only sensible to diable the arrow keeys some of the time.)
+
+Buffer Local Options && Mappings
+--------------------------------
+
+It is possible, by adding <buffer> to a mapping, to make a mapping apply to only
+the current buffer.
+
+It is bad form to use <buffer> and <leader> together. One should instead use
+<localleader>. This concept permits namespacing.
+
+Vim will always choose the more specific mapping; That is the one that contains
+<buffer> will take priority over the one that does not.
+
+Local Settings
+--------------
+
+Using :setlocal, it is possible to apply settings to only one buffer.
 
